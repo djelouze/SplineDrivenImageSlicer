@@ -66,7 +66,7 @@ int main(int argc, char** argv )
     vtkSmartPointer<vtkFrenetSerretFrame> frenetSerretFilter;
     frenetSerretFilter = vtkSmartPointer<vtkFrenetSerretFrame>::New( );
     
-    frenetSerretFilter->SetInput( circle );
+    frenetSerretFilter->SetInputData( circle );
     frenetSerretFilter->Update( );
 
     // Roughly check the result
