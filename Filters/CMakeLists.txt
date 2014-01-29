@@ -8,11 +8,4 @@ FILE(GLOB SRC_VTKSDIS_FILTERS *.cxx *.h)
 
 ADD_LIBRARY( vtkSDIS SHARED ${SRC_VTKSDIS_FILTERS} )
 
-TARGET_LINK_LIBRARIES( 
-                       vtkSDIS
-                       vtkFiltering 
-                       vtkRendering 
-                       vtkGraphics 
-                       vtkImaging 
-                       vtkHybrid
-                     )
+TARGET_LINK_LIBRARIES( vtkSDIS ${VTK_LIBRARIES} )
