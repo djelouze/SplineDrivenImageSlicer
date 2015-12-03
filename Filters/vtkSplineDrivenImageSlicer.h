@@ -19,7 +19,7 @@
 #ifndef __vtkSplineDrivenImageSlicer_h__
 #define __vtkSplineDrivenImageSlicer_h__
 
-#include"vtkImageAlgorithm.h"
+#include"vtkDataSetAlgorithm.h"
 
 // interpolation mode constants
 #define VTK_RESLICE_NEAREST VTK_NEAREST_INTERPOLATION
@@ -29,10 +29,10 @@
 class vtkFrenetSerretFrame;
 class vtkImageReslice;
 
-class VTK_EXPORT vtkSplineDrivenImageSlicer : public vtkImageAlgorithm
+class VTK_EXPORT vtkSplineDrivenImageSlicer : public vtkDataSetAlgorithm //should be derived from vtkDataSetAlgorithm if outputs differ in type, i.e. vtkImageData and vtkPolyData (otherwise GetOutput(1) segfaults, GetOutputPort(1) works anyway!)
 {
 public:
-   vtkTypeRevisionMacro(vtkSplineDrivenImageSlicer,vtkImageAlgorithm);
+   vtkTypeRevisionMacro(vtkSplineDrivenImageSlicer,vtkDataSetAlgorithm);
    static vtkSplineDrivenImageSlicer* New();
 
   //! Specify the path represented by a vtkPolyData wich contains PolyLines
