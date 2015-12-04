@@ -32,7 +32,7 @@ class vtkImageReslice;
 class VTK_EXPORT vtkSplineDrivenImageSlicer : public vtkDataSetAlgorithm //should be derived from vtkDataSetAlgorithm if outputs differ in type, i.e. vtkImageData and vtkPolyData (otherwise GetOutput(1) segfaults, GetOutputPort(1) works anyway!)
 {
 public:
-   vtkTypeRevisionMacro(vtkSplineDrivenImageSlicer,vtkDataSetAlgorithm);
+   vtkTypeMacro(vtkSplineDrivenImageSlicer,vtkDataSetAlgorithm);
    static vtkSplineDrivenImageSlicer* New();
 
   //! Specify the path represented by a vtkPolyData wich contains PolyLines
