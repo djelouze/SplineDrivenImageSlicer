@@ -273,7 +273,7 @@ int vtkSplineDrivenImageSlicer::RequestData(
 	 
          this->reslicer->SetResliceAxes( resliceAxes );
          this->reslicer->SetInformationInput( input );
-         this->reslicer->SetInterpolationModeToCubic( );
+         this->reslicer->SetInterpolationMode( this->InterpolationMode );
 
          this->reslicer->SetOutputDimensionality( 2 );
          this->reslicer->SetOutputOrigin(0,0,0);

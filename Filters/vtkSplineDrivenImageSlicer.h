@@ -21,6 +21,11 @@
 
 #include"vtkImageAlgorithm.h"
 
+// interpolation mode constants
+#define VTK_RESLICE_NEAREST VTK_NEAREST_INTERPOLATION
+#define VTK_RESLICE_LINEAR VTK_LINEAR_INTERPOLATION
+#define VTK_RESLICE_CUBIC VTK_CUBIC_INTERPOLATION
+
 class vtkFrenetSerretFrame;
 class vtkImageReslice;
 
@@ -61,6 +66,17 @@ public:
    vtkSetMacro( Incidence, double );
    vtkGetMacro( Incidence, double );
 
+   // Description:
+   // Set interpolation mode (default: nearest neighbor).
+   vtkSetClampMacro(InterpolationMode, int,
+       VTK_RESLICE_NEAREST, VTK_RESLICE_CUBIC);
+   vtkGetMacro(InterpolationMode, int);
+   void SetInterpolationModeToNearestNeighbor() {
+       this->SetInterpolationMode(VTK_RESLICE_NEAREST); };
+   void SetInterpolationModeToLinear() {
+       this->SetInterpolationMode(VTK_RESLICE_LINEAR); };
+   void SetInterpolationModeToCubic() {
+       this->SetInterpolationMode(VTK_RESLICE_CUBIC); };
 
 protected:
    vtkSplineDrivenImageSlicer();
@@ -73,6 +89,9 @@ protected:
    virtual int FillOutputPortInformation( int, vtkInformation*);
    virtual int RequestInformation(vtkInformation*, vtkInformationVector**, 
 	                                                vtkInformationVector*);
+
+   int InterpolationMode;
+
 private:
    vtkSplineDrivenImageSlicer(const vtkSplineDrivenImageSlicer&);  // Not implemented.
    void operator=(const vtkSplineDrivenImageSlicer&);  // Not implemented.
